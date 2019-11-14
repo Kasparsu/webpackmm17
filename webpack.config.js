@@ -1,5 +1,18 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+
+let files = ['index.pug', 'about.pug', 'contact.pug'];
+
+function genHtmlPlugins(files) {
+    return files.map((file) => {
+        return new HtmlWebpackPlugin({
+            filename: file.split('.')[0] + '.html',
+            template: "./src/" + file
+        })
+    })
+}
+
 
 module.exports = {
     entry: './src/main.js',
@@ -20,11 +33,41 @@ module.exports = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [{
+                    loader: MiniCssExtractPlugin.loader
+                }, 'css-loader', 'sass-loader'],
             },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
+            {
+                test: /\.ts$/,
+                loader: "ts-loader"
+            },
+            {
+                test: /\.pug$/,
+                loader: "pug-loader"
+            }
         ],
     },
-    plugins: [new HtmlWebpackPlugin({
-        template: "./src/index.html"
-    })]
+    plugins: [
+    //     new HtmlWebpackPlugin({
+    //     template: "./src/index.pug"
+    // }),
+    //     new HtmlWebpackPlugin({
+    //         template: "./src/about.pug"
+    //     }),
+    //     new HtmlWebpackPlugin({
+    //         template: "./src/contact.pug"
+    //     }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // all options are optional
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false, // Enable to remove warnings about conflicting order
+        }),
+    ].concat(genHtmlPlugins(files))
 };

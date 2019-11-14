@@ -86,18 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/Notify.js":
-/*!***********************!*\
-  !*** ./src/Notify.js ***!
-  \***********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction notice (msg) {\r\n    console.log('notice:' + msg);\r\n}\r\nfunction alert (msg) {\r\n    console.log('alert:' + msg);\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n    notice:notice,\r\n    alert:alert\r\n});\n\n//# sourceURL=webpack:///./src/Notify.js?");
-
-/***/ }),
-
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
@@ -105,7 +93,29 @@ eval("__webpack_require__.r(__webpack_exports__);\nfunction notice (msg) {\r\n  
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Notify = __webpack_require__(/*! ./Notify */ \"./src/Notify.js\");\r\n\r\nNotify.notice('Hi');\r\nNotify.alert('hello');\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__(/*! ./main.scss */ \"./src/main.scss\");\n\n__webpack_require__(/*! ./main.ts */ \"./src/main.ts\");\n\n//# sourceURL=webpack:///./src/main.js?");
+
+/***/ }),
+
+/***/ "./src/main.scss":
+/*!***********************!*\
+  !*** ./src/main.scss ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/main.scss?");
+
+/***/ }),
+
+/***/ "./src/main.ts":
+/*!*********************!*\
+  !*** ./src/main.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function hello(msg) {\r\n    alert(msg);\r\n}\r\nhello(\"hi\");\r\n\n\n//# sourceURL=webpack:///./src/main.ts?");
 
 /***/ })
 
