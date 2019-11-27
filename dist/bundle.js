@@ -90,10 +90,11 @@
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./main.scss */ \"./src/main.scss\");\n\n__webpack_require__(/*! ./main.ts */ \"./src/main.ts\");\n\n//# sourceURL=webpack:///./src/main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n__webpack_require__(/*! ./main.scss */ \"./src/main.scss\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  message: 'Hello world!'\n});\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ }),
 
@@ -105,17 +106,6 @@ eval("__webpack_require__(/*! ./main.scss */ \"./src/main.scss\");\n\n__webpack_
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/main.scss?");
-
-/***/ }),
-
-/***/ "./src/main.ts":
-/*!*********************!*\
-  !*** ./src/main.ts ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("function hello(msg) {\r\n    alert(msg);\r\n}\r\nhello(\"hi\");\r\n\n\n//# sourceURL=webpack:///./src/main.ts?");
 
 /***/ })
 

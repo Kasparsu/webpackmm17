@@ -1,8 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
 
-let files = ['index.pug', 'about.pug', 'contact.pug'];
+let files = ['index.html'];
 
 function genHtmlPlugins(files) {
     return files.map((file) => {
@@ -49,6 +50,10 @@ module.exports = {
             {
                 test: /\.pug$/,
                 loader: "pug-loader"
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
             }
         ],
     },
@@ -69,5 +74,11 @@ module.exports = {
             chunkFilename: '[id].css',
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
-    ].concat(genHtmlPlugins(files))
+        new VueLoaderPlugin(),
+    ].concat(genHtmlPlugins(files)),
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+        }
+    }
 };
