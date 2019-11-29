@@ -1,4 +1,6 @@
 require('./main.scss');
+const axios = require('axios');
+
 import Vue from 'vue';
 
 import Button from "./Button.vue";
@@ -16,17 +18,13 @@ Vue.component('search', Search);
 let app = new Vue({
     el: '#app',
     data: {
-        images: [
-            'https://picsum.photos/id/163/128/128',
-            'https://picsum.photos/id/264/128/128',
-            'https://picsum.photos/id/363/128/128',
-            'https://picsum.photos/id/464/128/128',
-            'https://picsum.photos/id/563/128/128',
-            'https://picsum.photos/id/663/128/128',
-            'https://picsum.photos/id/765/128/128',
-            'https://picsum.photos/id/863/128/128',
-            'https://picsum.photos/id/965/128/128',
-            'https://picsum.photos/id/1063/128/128',
-        ]
+        options: []
+    },
+    methods:{
+        searchMovies(query){
+            axios.get('https://api.themoviedb.org/3/search/movie?api_key=<api-key-here>&language=en-US&query='+ query +'&page=1&include_adult=false').then(response => {
+                this.options = response.data.results.map(movie => movie.original_title);
+            })
+        }
     }
 });

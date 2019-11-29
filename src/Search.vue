@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="section search-bar">
-            <input v-model="searchText" class="input" type="text" @input="filter">
-            <button class="button" @click="$emit('submit')">Submit</button>
+            <input v-model="searchText" class="input" type="text" @input="debounce">
+            <button class="button" @click="$emit('submit', searchText)">Submit</button>
         </div>
         <div class="section suggestions" v-if="results.length!=0">
             <ul>
-                <li v-for="option in results">{{option}}</li>
+                <li @click="searchText=option" v-for="option in options">{{option}}</li>
             </ul>
         </div>
     </div>
@@ -15,23 +15,30 @@
 <script>
     export default {
         name: "Search",
+        props: ['options'],
         data(){
           return {
-              searchText: ''
+              searchText: '',
+              timeout: null
           }
         },
         methods: {
-            filter(){
+            debounce(){
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(()=> {
+                    if(this.searchText != '') {
+                        this.$emit('changed', this.searchText)
+                    }
+                },1000);
 
             }
         },
         computed: {
             results(){
-                let options = ['apple', 'pineapple', 'pear', 'orange', 'cherry', 'mango', 'watermelone'];
-                return options.filter((option)=> {
+                return this.options.filter((option)=> {
                     if(this.searchText.length){
                         let sub = option.substr(0, this.searchText.length);
-                        return sub == this.searchText;
+                        return sub.toLowerCase() == this.searchText.toLowerCase();
                     }
                     return false;
                 });
