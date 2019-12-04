@@ -28,3 +28,13 @@ let app = new Vue({
         }
     }
 });
+
+window.ws = new WebSocket('ws://localhost:3333');
+
+ws.onopen = () => {
+    ws.send('Hey server');
+};
+
+ws.onmessage = (data)=>{
+    console.log(data.data);
+};
