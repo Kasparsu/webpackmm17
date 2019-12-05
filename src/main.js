@@ -9,32 +9,32 @@ import Tabs from "./Tabs.vue";
 import Carousel from "./Carousel.vue";
 import Search from "./Search.vue";
 
+import Chat from "./Chat.vue";
+import Message from "./Message.vue";
+import MessageList from "./MessageList.vue";
+import Textfield from "./Textfield.vue";
+
+
+
+
 Vue.component('my-button', Button);
 Vue.component('modal', Modal);
 Vue.component('tabs', Tabs);
 Vue.component('carousel', Carousel);
 Vue.component('search', Search);
 
+Vue.component('chat', Chat);
+Vue.component('message', Message);
+Vue.component('message-list', MessageList);
+Vue.component('textfield', Textfield);
+
 let app = new Vue({
     el: '#app',
     data: {
-        options: []
+
     },
     methods:{
-        searchMovies(query){
-            axios.get('https://api.themoviedb.org/3/search/movie?api_key=<api-key-here>&language=en-US&query='+ query +'&page=1&include_adult=false').then(response => {
-                this.options = response.data.results.map(movie => movie.original_title);
-            })
-        }
+
     }
 });
 
-window.ws = new WebSocket('ws://localhost:3333');
-
-ws.onopen = () => {
-    ws.send('Hey server');
-};
-
-ws.onmessage = (data)=>{
-    console.log(data.data);
-};
