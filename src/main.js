@@ -14,7 +14,7 @@ import Message from "./Message.vue";
 import MessageList from "./MessageList.vue";
 import Textfield from "./Textfield.vue";
 import Username from "./Username.vue";
-
+import UserList from "./UserList.vue";
 
 
 Vue.component('my-button', Button);
@@ -28,6 +28,7 @@ Vue.component('message', Message);
 Vue.component('message-list', MessageList);
 Vue.component('textfield', Textfield);
 Vue.component('username', Username);
+Vue.component('userlist', UserList);
 let app = new Vue({
     el: '#app',
     data: {

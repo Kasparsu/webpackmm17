@@ -3,9 +3,15 @@
         <div v-if="username===''">
             <username @join="join"></username>
         </div>
-        <div v-else class="chat">
-            <message-list :messages="messages"></message-list>
-            <textfield @send="addMessage"></textfield>
+        <div v-else class="chat columns">
+            <div class="column is-10">
+                <message-list :messages="messages"></message-list>
+                <textfield @send="addMessage"></textfield>
+            </div>
+            <div class="column is-2">
+                <userlist :users="users"></userlist>
+            </div>
+
         </div>
     </div>
 </template>
@@ -30,7 +36,8 @@
             return {
                 messages: [],
                 ws: null,
-                username: ''
+                username: '',
+                users: ['kaspar', 'martin', 'peeter']
             }
         },
         methods: {
