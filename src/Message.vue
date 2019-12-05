@@ -7,19 +7,31 @@
                     'has-background-info': message.user === 0,
                     'has-background-danger': message.user !== 0
                   }">
-            {{niceTime}}
+            Sent by {{message.username}} {{niceTime}}
             <br>
             {{message.message}}</span>
     </div>
 </template>
 
 <script>
+    import moment from 'moment';
     export default {
         name: "Message",
         props: ['message'],
+        created(){
+            setInterval(()=>{
+                this.currentTime = new Date();
+            },1000);
+        },
+        data(){
+            return {
+                currentTime: new Date()
+            }
+        },
         computed: {
             niceTime(){
-                return this.message.time.getHours() + ':' + this.message.time.getMinutes();
+                this.currentTime;
+                return moment(this.message.time).fromNow();
             }
         }
     }

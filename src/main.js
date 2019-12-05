@@ -13,7 +13,7 @@ import Chat from "./Chat.vue";
 import Message from "./Message.vue";
 import MessageList from "./MessageList.vue";
 import Textfield from "./Textfield.vue";
-
+import Username from "./Username.vue";
 
 
 
@@ -27,7 +27,7 @@ Vue.component('chat', Chat);
 Vue.component('message', Message);
 Vue.component('message-list', MessageList);
 Vue.component('textfield', Textfield);
-
+Vue.component('username', Username);
 let app = new Vue({
     el: '#app',
     data: {
