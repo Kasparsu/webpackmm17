@@ -40,6 +40,6 @@
     "vue": "^2.6.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-html-plugin": "^0.1.1",
-    "ws": "^7.2.0"
+    "ws": "^7.4.6"
   }
 }
